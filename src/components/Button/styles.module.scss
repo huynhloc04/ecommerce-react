@@ -1,9 +1,7 @@
-@import '@styles/mixin.module.scss';
+@use '@styles/mixin.module.scss' as mixin;
+@use '@styles/variable.module.scss' as variables;
 
-.btn1 {
-  @include btn(30px, 30px, 0px);
-}
-
-.btn2 {
-  @include btn(44px, 44px, 50px);
+.btn {
+  @include mixin.btn(176px, 42px, variables.$primary_color, 5px);
+  color: variables.$white_color;
 }

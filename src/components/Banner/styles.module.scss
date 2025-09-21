@@ -1,0 +1,30 @@
+@use '@styles/mixin.module.scss' as mixin;
+@use '@styles/variable.module.scss' as variable;
+
+.container {
+  @include mixin.flex_box_common(center, center, 0px);
+
+  background-image: url('../../assets/images/banner.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 750px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 42px;
+  color: variable.$four_color;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+.description {
+  color: variable.$thr_color;
+  font-size: 16px;
+  margin-bottom: 35px;
+}

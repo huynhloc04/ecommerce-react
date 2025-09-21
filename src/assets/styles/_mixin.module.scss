@@ -2,12 +2,20 @@
   border-radius: $radius;
 }
 
+@mixin flex_box_common($x, $y, $gap: 10px) {
+  display: flex;
+  justify-content: $x;
+  align-items: $y;
+  gap: $gap;
+}
+
 @mixin btn($w, $h, $color, $radius: 2px) {
+  @include radius_common($radius);
+
   outline: none;
-  cursor: pointer;
   border: 1px solid #e1e1e1;
   width: $w;
   height: $h;
   background-color: $color;
-  @include radius_common($radius);
+  cursor: pointer;
 }
