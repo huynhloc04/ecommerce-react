@@ -1,0 +1,45 @@
+@use '@styles/mixin.module.scss' as mixin;
+@use '@styles/variable.module.scss' as variables;
+
+.boxIcon {
+  @include mixin.flex_box_common(center, center, 0px);
+
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.containerBoxIcons {
+  @include mixin.flex_box_common(center, center, 10px);
+
+  width: 94px;
+}
+
+.containerBox {
+  @include mixin.flex_box_common(center, center, 20px);
+}
+
+.containerDataMenu {
+  @include mixin.flex_box_common(center, center, 25px);
+
+  font-size: 15px;
+  color: variables.$primary_color;
+  cursor: pointer;
+}
+
+.containerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 83px;
+  width: 1250px;
+}
+
+.container {
+  @include mixin.flex_box_common(center, center, 0px);
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+}
