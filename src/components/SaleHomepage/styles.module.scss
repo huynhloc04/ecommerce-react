@@ -1,0 +1,42 @@
+@use '@styles/mixin.module.scss' as mixin;
+@use '@styles/variable.module.scss' as variables;
+
+.container {
+  @include mixin.flex_box_common(space-between, center, 0px);
+  margin-top: 150px;
+  width: 100%;
+  height: 500px;
+}
+
+.boxImg {
+  height: 100%;
+  width: 732px;
+  text-align: center;
+
+  .img {
+    width: 575px;
+    height: 100px;
+  }
+}
+
+.saleInfo {
+  @include mixin.flex_box_common(center, center, 0px);
+  flex-direction: column;
+  height: 100%;
+  width: 368px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 35px;
+  text-transform: capitalize;
+  color: variables.$primary_color;
+}
+
+.description {
+  font-size: 16px;
+  color: variables.$secondary_color;
+  text-align: center;
+  width: 338px;
+  height: 78px;
+}

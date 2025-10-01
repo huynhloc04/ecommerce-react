@@ -1,0 +1,36 @@
+@use '@styles/mixin.module.scss' as mixin;
+@use '@styles/variable.module.scss' as variables;
+
+.container {
+  .inputLabel {
+    font-size: 14px;
+    width: 307px;
+    color: variables.$thr_color;
+  }
+
+  .boxInput {
+    margin-top: 5px;
+    position: relative;
+
+    input {
+      @include mixin.radius_common(4px);
+
+      width: 100%;
+      height: 25px;
+      font-size: 15px;
+      color: variables.$thr_color;
+      padding: 10px 0 10px 10px;
+      border: 1px solid #e1e1e1;
+      position: relative;
+    }
+
+    .boxIcon {
+      position: absolute;
+      top: 15px;
+      right: 3px;
+      width: 10px;
+      height: 10px;
+      cursor: pointer;
+    }
+  }
+}

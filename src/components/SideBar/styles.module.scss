@@ -1,0 +1,56 @@
+@use '@styles/variable.module.scss' as variables;
+@use '@styles/mixin.module.scss' as mixin;
+
+.container {
+  position: relative;
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #0000004d;
+    z-index: 20;
+    transition: all 0.3s ease;
+  }
+
+  .sideBar {
+    background-color: variables.$white_color;
+    width: 370px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 21;
+  }
+
+  .sideBarOpen {
+    right: -370px;
+    transform: translateX(-370px);
+    transition: transform 0.5s ease;
+  }
+
+  .sideBarClose {
+    right: -370px;
+    transform: translateX(370px);
+    transition: transform 1s ease;
+  }
+
+  .boxCloseIcon {
+    @include mixin.radius_common(50%);
+    @include mixin.flex_box_common(center, center, 0px);
+
+    position: absolute;
+    top: 20px;
+    left: -50px;
+    width: 30px;
+    height: 30px;
+    background-color: variables.$white_color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: variables.$secondary_color;
+    }
+  }
+}

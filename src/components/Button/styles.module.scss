@@ -4,4 +4,5 @@
 .btn {
   @include mixin.btn(176px, 42px, variables.$primary_color, 5px);
   color: variables.$white_color;
+  cursor: pointer;
 }

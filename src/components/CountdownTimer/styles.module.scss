@@ -1,0 +1,26 @@
+@use '@styles/mixin.module.scss' as mixin;
+@use '@styles/variable.module.scss' as variables;
+
+.container {
+  @include mixin.flex_box_common(center, center, 8px);
+  @include mixin.radius_common(5px);
+
+  background-color: variables.$white_color;
+  font-size: 18px;
+  width: 100px;
+  height: 41px;
+}
+
+.timeValue {
+  color: variables.$primary_color;
+  display: inline;
+  text-align: center;
+  height: 24px;
+}
+
+.timeKey {
+  color: variables.$secondary_color;
+  display: inline;
+  text-align: center;
+  height: 24px;
+}

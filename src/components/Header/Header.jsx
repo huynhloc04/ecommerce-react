@@ -2,8 +2,11 @@ import BoxIcon from './BoxIcon/BoxIcon';
 import Menu from './Menu/Menu';
 import styles from './styles.module.scss';
 import retinaLogo from '@images/retina_logo.png';
-
+import useScrollHandling from '@hooks/useScrollHandling';
 import { mediaIcons, dataMenu } from '@components/Header/constants';
+import { useContext, useEffect, useState } from 'react';
+import { SideBarContext } from '@/contexts/SideBar';
+import classNames from 'classnames';
 
 function Header() {
   const {
@@ -11,11 +14,25 @@ function Header() {
     containerBox,
     containerDataMenu,
     containerHeader,
-    container
+    container,
+    topContainer,
+    scrollContainer
   } = styles;
 
+  const { scrollDirection, scrollPosition } = useScrollHandling();
+  const [fixScrollHeader, setFixScrollHeader] = useState(false);
+  const { isOpen, setIsOpen } = useContext(SideBarContext);
+
+  useEffect(() => {
+    setFixScrollHeader(scrollPosition >= 120);
+  }, [scrollPosition]);
+
   return (
-    <div className={container}>
+    <div
+      className={classNames(container, topContainer, {
+        [scrollContainer]: fixScrollHeader
+      })}
+    >
       <div className={containerHeader}>
         <div className={containerBox}>
           <div className={containerBoxIcons}>
@@ -45,7 +62,12 @@ function Header() {
         <div className={containerBox}>
           <div className={containerDataMenu}>
             {dataMenu.slice(3, 6).map((data, index) => (
-              <Menu key={index} content={data.content} href={data.href} />
+              <Menu
+                key={index}
+                content={data.content}
+                href={data.href}
+                setOpen={setIsOpen}
+              />
             ))}
           </div>
           <div className={containerBoxIcons}>
