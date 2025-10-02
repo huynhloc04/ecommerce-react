@@ -14,11 +14,23 @@ function SideBar() {
     sideBarClose,
     boxCloseIcon
   } = styles;
-  const { isOpen, setIsOpen } = useContext(SideBarContext);
+  const { isOpen, setIsOpen, sidebarType } = useContext(SideBarContext);
 
   const handleCloseSideBar = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleRenderSidebarContent = type => {
+    switch (type) {
+      case 'Sign In':
+        return <Login />;
+      case 'Search':
+        return <div>Search</div>;
+      case 'Contacts':
+        return <div>Contacts</div>;
+    }
+  };
+
   return (
     <div className={container}>
       <div
@@ -36,7 +48,7 @@ function SideBar() {
             <RiCloseLargeLine />
           </div>
         )}
-        <Login />
+        {handleRenderSidebarContent(sidebarType)}
       </div>
     </div>
   );

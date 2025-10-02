@@ -21,7 +21,7 @@ function Header() {
 
   const { scrollDirection, scrollPosition } = useScrollHandling();
   const [fixScrollHeader, setFixScrollHeader] = useState(false);
-  const { isOpen, setIsOpen } = useContext(SideBarContext);
+  const { setIsOpen, setSidebarType } = useContext(SideBarContext);
 
   useEffect(() => {
     setFixScrollHeader(scrollPosition >= 120);
@@ -67,6 +67,7 @@ function Header() {
                 content={data.content}
                 href={data.href}
                 setOpen={setIsOpen}
+                setSidebarType={setSidebarType}
               />
             ))}
           </div>
