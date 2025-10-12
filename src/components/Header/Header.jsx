@@ -5,7 +5,7 @@ import retinaLogo from '@images/retina_logo.png';
 import useScrollHandling from '@hooks/useScrollHandling';
 import { mediaIcons, dataMenu } from '@components/Header/constants';
 import { useContext, useEffect, useState } from 'react';
-import { SideBarContext } from '@/contexts/SideBar';
+import { SideBarContext } from '@/contexts/SideBarProvider';
 import classNames from 'classnames';
 
 function Header() {

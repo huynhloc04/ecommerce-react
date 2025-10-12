@@ -15,11 +15,16 @@ function HomePage() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    getProducts()
-      .then(res => {
-        setProducts(res.contents);
-      })
-      .catch(error => console.error('Error when fetching data:', error));
+    const fetchProducts = async () => {
+      try {
+        const response = await getProducts();
+        // setProducts(response.data, contents);
+      } catch (error) {
+        console.error('Error when fetching data:', error);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   return (

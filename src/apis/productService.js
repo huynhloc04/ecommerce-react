@@ -2,8 +2,7 @@ import axiosClient from './axiosClient';
 
 const getProducts = async () => {
   try {
-    const response = await axiosClient.get('/product');
-    return response.data;
+    return await axiosClient.get('/users/search');
   } catch (error) {
     throw error;
   }

@@ -1,7 +1,8 @@
 import styles from './styles.module.scss';
 import classNames from 'classnames';
-import { SideBarContext } from '@/contexts/SideBar';
-import Login from '@components/SideBarContent/Login';
+import { SideBarContext } from '@/contexts/SideBarProvider';
+import Login from '@components/SideBarContent/Login/Login';
+import Register from '@components/SideBarContent/Register/Register';
 import { useContext } from 'react';
 import { RiCloseLargeLine } from 'react-icons/ri';
 
@@ -24,6 +25,8 @@ function SideBar() {
     switch (type) {
       case 'Sign In':
         return <Login />;
+      case 'Sign Up':
+        return <Register />;
       case 'Search':
         return <div>Search</div>;
       case 'Contacts':
