@@ -1,9 +1,8 @@
 import styles from './styles.module.scss';
 import classNames from 'classnames';
-import { SideBarContext } from '@/contexts/SideBarProvider';
 import Login from '@components/SideBarContent/Login/Login';
 import Register from '@components/SideBarContent/Register/Register';
-import { useContext } from 'react';
+import { useSideBar } from '@/contexts/SideBarProvider';
 import { RiCloseLargeLine } from 'react-icons/ri';
 
 function SideBar() {
@@ -15,7 +14,7 @@ function SideBar() {
     sideBarClose,
     boxCloseIcon
   } = styles;
-  const { isOpen, setIsOpen, sidebarType } = useContext(SideBarContext);
+  const { isOpen, setIsOpen, sidebarType } = useSideBar();
 
   const handleCloseSideBar = () => {
     setIsOpen(!isOpen);

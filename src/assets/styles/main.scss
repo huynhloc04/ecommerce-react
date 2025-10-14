@@ -1,4 +1,17 @@
 @use 'normalize.css';
-@use './variable.module.scss';
-@use './mixin.module.scss';
 @use './global.module.scss';
+
+.light-mode {
+  --font-color: #101212;
+  --body-bg-color: #ffffff;
+}
+.dark-mode {
+  --font-color: #cccccc;
+  --body-bg-color: #202020;
+}
+
+body {
+  color: var(--font-color);
+  background-color: var(--body-bg-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}

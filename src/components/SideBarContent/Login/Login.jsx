@@ -2,17 +2,19 @@ import styles from './styles.module.scss';
 import InputCommon from '@components/InputCommon/InputCommon';
 import Button from '@components/Button/Button';
 import { login } from '@/apis/authService';
-import { SideBarContext } from '@/contexts/SideBarProvider';
-import { ToastContext } from '@/contexts/ToastProvider';
-import { useContext, useState } from 'react';
+import { useSideBar } from '@/contexts/SideBarProvider';
+import { useToast } from '@/contexts/ToastProvider';
+import { useStore } from '@/contexts/StoreProvider';
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import Cookies from 'js-cookie';
 import * as Yup from 'yup';
 
 function Login() {
   const { container, title, content, rememberMe, footer, footerText } = styles;
-  const { setSidebarType } = useContext(SideBarContext);
-  const { toast } = useContext(ToastContext);
+  const { setUserInfo } = useStore();
+  const { toast } = useToast();
+  const { setIsOpen, setSidebarType } = useSideBar();
   const [isLoading, setIsLoading] = useState(false);
 
   const formik = useFormik({
@@ -37,10 +39,16 @@ function Login() {
         toast.success(response.data.message);
         setIsLoading(false);
 
-        const { access_token: accessToken, refresh_token: refreshToken } =
-          response.data.data;
+        const {
+          access_token: accessToken,
+          refresh_token: refreshToken,
+          user: userInfo
+        } = response.data.data;
         Cookies.set('accessToken', accessToken);
         Cookies.set('refreshToken', refreshToken);
+        Cookies.set('userInfo', JSON.stringify(userInfo));
+        setIsOpen(false);
+        setUserInfo(userInfo);
       } catch (error) {
         toast.error(error.response.data.message);
         setIsLoading(false);

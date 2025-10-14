@@ -1,12 +1,12 @@
 import BoxIcon from './BoxIcon/BoxIcon';
 import Menu from './Menu/Menu';
 import styles from './styles.module.scss';
+import classNames from 'classnames';
 import retinaLogo from '@images/retina_logo.png';
 import useScrollHandling from '@hooks/useScrollHandling';
 import { mediaIcons, dataMenu } from '@components/Header/constants';
-import { useContext, useEffect, useState } from 'react';
-import { SideBarContext } from '@/contexts/SideBarProvider';
-import classNames from 'classnames';
+import { useEffect, useState } from 'react';
+import { useSideBar } from '@/contexts/SideBarProvider';
 
 function Header() {
   const {
@@ -19,9 +19,9 @@ function Header() {
     scrollContainer
   } = styles;
 
-  const { scrollDirection, scrollPosition } = useScrollHandling();
+  const { scrollPosition } = useScrollHandling();
   const [fixScrollHeader, setFixScrollHeader] = useState(false);
-  const { setIsOpen, setSidebarType } = useContext(SideBarContext);
+  const { setIsOpen, setSidebarType } = useSideBar();
 
   useEffect(() => {
     setFixScrollHeader(scrollPosition >= 120);

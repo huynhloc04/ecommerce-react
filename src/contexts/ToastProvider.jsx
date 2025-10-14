@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 
 export const ToastContext = createContext();
@@ -11,3 +11,5 @@ export const ToastProvider = ({ children }) => {
     </ToastContext.Provider>
   );
 };
+
+export const useToast = () => useContext(ToastContext);

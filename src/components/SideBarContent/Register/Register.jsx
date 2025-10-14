@@ -1,15 +1,15 @@
 import styles from './styles.module.scss';
 import Button from '@components/Button/Button';
 import InputCommon from '@components/InputCommon/InputCommon';
-import { ToastContext } from '@/contexts/ToastProvider';
+import { useToast } from '@/contexts/ToastProvider';
 import { register } from '@/apis/authService';
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import * as Yup from 'yup';
-import { useState, useContext } from 'react';
 
 function Register() {
   const { container, title, content, footerText } = styles;
-  const { toast } = useContext(ToastContext);
+  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
   const formik = useFormik({

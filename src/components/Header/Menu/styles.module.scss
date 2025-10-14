@@ -1,0 +1,19 @@
+@use '@styles/mixin.module.scss' as mixin;
+@use '@styles/variable.module.scss' as variables;
+
+.menu {
+  position: relative;
+
+  .subMenu {
+    @include mixin.radius_common(3px);
+    @include mixin.flex_box_common(center, center, 0);
+    position: absolute;
+    top: 10px;
+    background-color: variables.$sub_color;
+    width: 100%;
+    height: 30px;
+    font-size: 14px;
+    transform: translateY(12px);
+    transition: transform 1s ease;
+  }
+}

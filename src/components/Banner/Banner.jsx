@@ -1,8 +1,10 @@
 import styles from './styles.module.scss';
 import Button from '@components/Button/Button';
+import { useTheme } from '@/contexts/ThemeProvider';
 
 function Banner() {
   const { container, content, title, description } = styles;
+  const { handleChangeTheme } = useTheme();
   return (
     <div className={container}>
       <div className={content}>
@@ -10,7 +12,7 @@ function Banner() {
         <div className={description}>
           Make yours celebrations even more special this years with beautiful.
         </div>
-        <Button content='Go to Shop' />
+        <Button onClick={handleChangeTheme} content='Go to Shop' />
       </div>
     </div>
   );
